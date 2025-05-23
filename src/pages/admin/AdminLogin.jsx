@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png';
+import { server } from '../../constants/config';
 
 const AdminLogin = () => {
   const [adminSecret, setAdminSecret] = useState('');
@@ -10,7 +11,7 @@ const AdminLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('http://localhost:5000/api/admin/auth/login', { adminSecret });
+      const { data } = await axios.post(`${server}/admin/auth/login`, { adminSecret });
       localStorage.setItem('token', data.token);
       navigate('/admin/dashboard');
     } catch (error) {

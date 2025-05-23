@@ -38,11 +38,11 @@ function App() {
         
         <Route path="/empdashboard" element={<EmployeeLayout><EmployeeDashboard /></EmployeeLayout>} />
         <Route path="/employees" element={<Employees />} />
-        <Route path="/payrolls" element={<Payrolls />} />
+        {/* <Route path="/payrolls" element={<Payrolls />} /> */}
         <Route path="/my-attendance" element={<EmployeeLayout><PersonalAttendance /></EmployeeLayout>} />
         <Route path='/leave-request' element={<EmployeeLayout><LeaveRequestForm /></EmployeeLayout>} />
         <Route path='//leave-history' element={<EmployeeLayout><LeaveHistory /></EmployeeLayout>} />
-        <Route path="/my-payslips" element={<MyPayslips />} />
+        {/* <Route path="/my-payslips" element={<MyPayslips />} /> */}
          <Route path="/mark-attendance" element={<EmployeeLayout><MarkAttendancePage /></EmployeeLayout>} />
          <Route path="/salary-slip" element={<EmployeeLayout><GetSalarySlip /></EmployeeLayout>} />
         {/* <Route path="/my-attendance" element={<MyAttendance />} /> */}

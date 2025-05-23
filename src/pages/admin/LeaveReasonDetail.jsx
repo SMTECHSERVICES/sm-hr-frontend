@@ -38,6 +38,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
+import { server } from "../../constants/config";
 
 const LeaveReasonDetail = () => {
   const { id } = useParams(); // leave ID from route
@@ -51,7 +52,7 @@ const LeaveReasonDetail = () => {
     const getLeaveDetails = async()=>{
          try {
               const token = localStorage.getItem('token');
-               const { data } = await axios.get(`http://localhost:5000/api/admin/leave/reason/${id}`, {
+               const { data } = await axios.get(`${server}/admin/leave/reason/${id}`, {
           headers: { Authorization: token },
         });
         console.log(data)

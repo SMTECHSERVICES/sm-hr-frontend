@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../../components/admin/Sidebar';
+import { server } from '../../constants/config';
 
 function EmployeeList() {
   const [employees, setEmployees] = useState([]);
@@ -11,7 +12,7 @@ function EmployeeList() {
     const fetchEmployees = async () => {
       try {
         const token = localStorage.getItem('token');
-        const { data } = await axios.get('http://localhost:5000/api/admin/employees/all', {
+        const { data } = await axios.get(`${server}/admin/employees/all`, {
           headers: { Authorization: token },
         });
         console.log(data)

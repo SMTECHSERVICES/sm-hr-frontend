@@ -3,14 +3,21 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import AuthLayout from '../layouts/shared/AuthLayout';
 
+import { server } from '../constants/config';
+import { useEffect } from 'react';
+
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+  useEffect(()=>{
+    console.log(server)
+  },[])
+
   const handleLogin = async () => {
     try {
-      const { data } = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const { data } = await axios.post(`${server}/auth/login`, { email, password });
       console.log('success');
       localStorage.setItem('token', data.token);
       navigate('/empdashboard');

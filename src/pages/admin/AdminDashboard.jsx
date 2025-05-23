@@ -6,6 +6,7 @@ import axios from 'axios'
 import OverviewCard from '../../components/admin/OverviewCard';
 import ActionCard from '../../components/admin/ActionCard';
 import Sidebar from '../../components/admin/Sidebar';
+import { server } from '../../constants/config';
 
 function AdminDashboard() {
 
@@ -22,7 +23,7 @@ function AdminDashboard() {
    useEffect(() => {
     const fetchSummary = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/admin/employees/allDetails', { headers });
+        const res = await axios.get(`${server}/admin/employees/allDetails`, { headers });
         setSummary(res.data);
       } catch (err) {
         console.error('Failed to load dashboard summary:', err);

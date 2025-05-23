@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { server } from '../../constants/config';
 
 function CreatePayroll() {
   const { id } = useParams(); // Employee ID
@@ -21,7 +22,7 @@ function CreatePayroll() {
     const fetchEmployee = async () => {
       const token = localStorage.getItem('token');
       
-      const { data } = await axios.get(`http://localhost:5000/api/admin/employees/${id}`, {
+      const { data } = await axios.get(`${server}/admin/employees/${id}`, {
         headers: { Authorization: token },
       });
       setEmployee(data.employee);
@@ -45,7 +46,7 @@ function CreatePayroll() {
     setIsDisable(true);
     try {
       const { data } = await axios.post(
-        `http://localhost:5000/api/admin/payroll/generate/${id}`,
+        `${server}/admin/payroll/generate/${id}`,
         formData,
         {
           headers: {

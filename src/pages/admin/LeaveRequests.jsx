@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import { useState,useEffect } from "react";
 import axios from 'axios'
+import { server } from "../../constants/config";
 
 const LeaveRequests = () => {
     const [leaveRequests,setLeaveRequests] = useState([]);
@@ -16,7 +17,7 @@ const LeaveRequests = () => {
     const fetchLeaveRequests = async () => {
       try {
         const token = localStorage.getItem('token');
-        const { data } = await axios.get('http://localhost:5000/api/admin/leave/all', {
+        const { data } = await axios.get(`${server}/admin/leave/all`, {
           headers: { Authorization: token },
         });
         console.log(data)

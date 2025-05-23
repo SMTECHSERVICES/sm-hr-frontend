@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'; 
+import { server } from '../../constants/config';
 
 function EmployeeDetail() {
 
@@ -15,7 +16,7 @@ function EmployeeDetail() {
     const getUserDetail = async () => {
       try {
         const token = localStorage.getItem('token');
-        const { data } = await axios.get(`http://localhost:5000/api/admin/employees/${id}`, {
+        const { data } = await axios.get(`${server}/admin/employees/${id}`, {
           headers: { Authorization: token },
         });
 

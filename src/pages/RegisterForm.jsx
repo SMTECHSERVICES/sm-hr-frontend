@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import AuthLayout from '../layouts/shared/AuthLayout';
+import { server } from '../constants/config';
 
 const RegisterForm = () => {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const RegisterForm = () => {
         dataToSend.append(key, value);
       });
 
-      const data = await axios.post('http://localhost:5000/api/auth/register', dataToSend, {
+      const data = await axios.post(`${server}/auth/register`, dataToSend, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

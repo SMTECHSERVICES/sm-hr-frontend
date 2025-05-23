@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { server } from '../constants/config';
 
 function MyPayslips() {
   const [data, setData] = useState([]);
@@ -7,8 +8,8 @@ function MyPayslips() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/payrolls/mine', {
-        headers: { Authorization: `Bearer ${token}` },
+      .get(`${server}/payrolls/mine`, {
+        headers: { Authorization: `${token}` },
       })
       .then((res) => setData(res.data));
   }, []);

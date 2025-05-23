@@ -1,6 +1,7 @@
 
 import { useEffect,useState } from 'react';
 import axios from 'axios';
+import { server } from '../constants/config';
 
 const PersonalAttendance = () => {
     const [attendance, setAttendance] = useState([]);
@@ -13,7 +14,7 @@ const PersonalAttendance = () => {
             const headers = { Authorization: `${token}` };
     
             
-            const attendanceRes = await axios.get('http://localhost:5000/api/employee/attendance/me', { headers });
+            const attendanceRes = await axios.get(`${server}/employee/attendance/me`, { headers });
             //const leaveRes = await axios.get('http://localhost:5000/api/leave/me', { headers });
     
             

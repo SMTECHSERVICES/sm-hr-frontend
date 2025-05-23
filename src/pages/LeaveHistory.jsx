@@ -1,9 +1,11 @@
 import { useEffect,useState } from 'react';
 import axios from 'axios';
+ import { server } from '../constants/config';
 
 const LeaveHistory = () => {
     const [leaveHistory, setLeaveHistory] = useState([]);
     const [loading, setLoading] = useState(true);
+   
 
     useEffect(() => {
         const fetchLeaveHistory = async () => {
@@ -12,7 +14,7 @@ const LeaveHistory = () => {
             const headers = { Authorization: `${token}` };
     
             
-            const leaveRes = await axios.get('http://localhost:5000/api/leaves/all', { headers });
+            const leaveRes = await axios.get(`${server}/leaves/all`, { headers });
             //const leaveRes = await axios.get('http://localhost:5000/api/leave/me', { headers });
             console.log(leaveRes)
     

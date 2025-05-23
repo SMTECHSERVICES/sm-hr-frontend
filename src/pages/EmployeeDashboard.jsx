@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { server } from '../constants/config';
+
 
 const EmployeeDashboard = () => {
   const [employee, setEmployee] = useState({});
@@ -13,8 +15,8 @@ const EmployeeDashboard = () => {
         const token = localStorage.getItem('token');
         const headers = { Authorization: `${token}` };
 
-        const empRes = await axios.get('http://localhost:5000/api/employee/me', { headers });
-        const attendanceRes = await axios.get('http://localhost:5000/api/employee/attendance/me', { headers });
+        const empRes = await axios.get(`${server}/employee/me`, { headers });
+        const attendanceRes = await axios.get(`${server}/employee/attendance/me`, { headers });
 
         setEmployee(empRes?.data);
         setAttendance(attendanceRes?.data.attendanceReport);

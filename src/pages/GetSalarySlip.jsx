@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { server } from '../constants/config';
 
 const GetSalarySlip = () => {
   const [payrolls, setPayrolls] = useState([]);
@@ -8,7 +9,7 @@ const GetSalarySlip = () => {
     const fetchPayrolls = async () => {
       try {
         const token = localStorage.getItem('token');
-        const { data } = await axios.get('http://localhost:5000/api/employee/payroll', {
+        const { data } = await axios.get(`${server}/employee/payroll`, {
           headers: { Authorization: token }
         });
         setPayrolls(data);

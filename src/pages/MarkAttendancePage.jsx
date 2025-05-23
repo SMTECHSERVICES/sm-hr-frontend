@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { server } from "../constants/config";
 
 const MarkAttendancePage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -14,7 +15,7 @@ const MarkAttendancePage = () => {
       const today = new Date().toISOString().split("T")[0]; // "YYYY-MM-DD"
 
       await axios.post(
-        "http://localhost:5000/api/employee/mark-attendance",
+        `${server}/employee/mark-attendance`,
         {
           status,
           date: today,

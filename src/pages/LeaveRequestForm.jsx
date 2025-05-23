@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { server } from "../constants/config";
 
 const LeaveRequestForm = () => {
   const [formData, setFormData] = useState({
@@ -45,7 +46,7 @@ const validate = () => {
     
    try {
     const { data } = await axios.post(
-      "http://localhost:5000/api/leaves/apply",
+    ` ${server}/leaves/apply`,
       formData, // body
       {
         headers: {
